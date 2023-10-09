@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+projects
+{% endblock %}
+
+{% block content %}
+    <ul class = "list-group">
+        {% for project in projects %}
+        <li class = "list-group-item">
+            {{ project.name }}
+        </li>
+    </ul>
+{% endblock content %}
+        
+
