@@ -5,12 +5,15 @@ projects
 {% endblock %}
 
 {% block content %}
-    <ul class = "list-group">
+<h1>List of projects</h1>
+
+<ul class = "list-group">
         {% for project in projects %}
-        <li class = "list-group-item">
-            {{ project.name }}
-        </li>
-    </ul>
-{% endblock content %}
-        
+            <li class="list-group-item" >
+                {{ project.name }}
+            </li>
+        {% endfor %}
+</ul>
+{% endblock content %} 
+
 

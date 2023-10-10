@@ -284,7 +284,7 @@ $navbar-toggler-padding-y: 0.25rem;
 $navbar-toggler-padding-x: 0.75rem;
 $navbar-toggler-font-size: $font-size-lg;
 $navbar-toggler-border-radius: $btn-border-radius;
-$navbar-dark-color: rgba($white, 0.5);
+$navbar-dark-color: rgba(100, 200, 1, 0.5);
 $navbar-dark-hover-color: rgba($white, 0.75);
 $navbar-dark-active-color: rgba($white, 1);
 $navbar-dark-disabled-color: rgba($white, 0.25);
@@ -571,7 +571,11 @@ body {
 }
 
 .bg-translucent-secondary {
-    background-color: rgba(192, 75, 242, 0.5) !important;
+    background-color: rgba(100, 200, 1, 0.5) !important;
+}
+
+.bg-translucent-test {
+    background-color: rgba(100, 200, 1, 0.5) !important;
 }
 
 @import url("https://use.typekit.net/abj6ial.css");
