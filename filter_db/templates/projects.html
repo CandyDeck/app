@@ -6,12 +6,17 @@ projects
 
 {% block content %}
 <h1>List of projects</h1>
-
+<p> Here is a list of all projects and the description can be obtained by clicking on them </p>
 <ul class = "list-group">
         {% for project in projects %}
-            <li class="list-group-item" >
+            {% comment %} this is only  for the list without clicking on 
+             <li class="list-group-item" >
                 {{ project.name }}
-            </li>
+            </li> {% endcomment %}
+
+            <a class = "list-group-item list-group-item-action" href = "{% url 'project_detail' project.project_id %}">
+                {{ project }}
+            </a>
         {% endfor %}
 </ul>
 {% endblock content %} 
