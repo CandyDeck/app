@@ -39,12 +39,6 @@ class Student(models.Model):
 
 class Projects(models.Model):
 
-    student_id = models.CharField(
-        unique=True,
-        null=False,
-        blank=False,
-        max_length=50,    
-    )
     project_id = models.CharField(
         primary_key= True,
         unique = False,

@@ -7,8 +7,17 @@ projects - {{ project }}
 {% block content %}
 <h1>{{project}}</h1>
 
-<p>{{project.description}} </p>
+<p><b>Project's description :</b>{{project.description}} </p>
+<p><b>Project's name :</b>{{project.name}} </p>
+<p><b> This project took place between</b> {{project.start_date}} <b> and </b> {{project.end_date}}
 
-{% endblock content %} 
+<p> The persons working on the project "{{project}}" are the following:</p>
+    <ul class ="list-group">
+        {% for student in project.students.all %}
+        <a class = "list-group-item list-group-item-action" href="{% url 'student_detail' student.student_id%}"> {{ student }}</a>
+        {% endfor %}
+    </ul> 
+
+    {% endblock content %} 
 
 

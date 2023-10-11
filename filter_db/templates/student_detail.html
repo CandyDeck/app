@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+student - {{ student }}
+{% endblock %}
+
+{% block content %}
+<h1>{{student}}</h1>
+
+<p><b>Student's name :</b> {{student.first_name}} {{student.middle_name}} {{student.last_name}} </p>
+{{student.student_id}}
+
+<ul class="list-group">
+    {% for project in sprojects.all%}
+    <a class = "list-group-item list-group-item-action" href="{% url 'project_detail' project.id %}"> {{project}}</a>
+    {% endfor %}
+</ul>
+{% endblock content %} 

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+students
+{% endblock %}
+
+{% block content %}
+<h1>List of students</h1>
+<p> Here is a list of all students </p>
+<ul class = "list-group">
+        {% for student in students %}
+            
+             {% comment %} <li class="list-group-item" >
+                {{ student.last_name }}
+            </li>  {% endcomment %}
+
+            <a class = "list-group-item list-group-item-action" href = "{% url 'student_detail' student.student_id %}">
+                {{ student }}
+            </a> 
+        {% endfor %}
+</ul>
+{% endblock content %} 
+
+
