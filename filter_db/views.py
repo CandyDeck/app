@@ -31,3 +31,5 @@ class StudentDetailView(generic.DetailView) :
     template_name = 'student_detail.html'
     model = models.Student
     context_object_name = 'student'
+
+ 

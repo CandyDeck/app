@@ -8,11 +8,12 @@ student - {{ student }}
 <h1>{{student}}</h1>
 
 <p><b>Student's name :</b> {{student.first_name}} {{student.middle_name}} {{student.last_name}} </p>
-{{student.student_id}}
 
-<ul class="list-group">
-    {% for project in sprojects.all%}
-    <a class = "list-group-item list-group-item-action" href="{% url 'project_detail' project.id %}"> {{project}}</a>
-    {% endfor %}
-</ul>
+<P>The person {{student}} is also working in these projects : {{project_id}}</p> 
+    <ul class ="list-group">
+        {% for project in student.students.all %}
+        <a class = "list-group-item list-group-item-action" href="{% url 'project_detail' project.project_id%}"> {{ project }}</a>
+        {% endfor %}
+    </ul> 
+
 {% endblock content %} 
