@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import models
 
 from django.views import generic
-
+from .models import Projects
 
 
 # Create your views here.
@@ -32,4 +32,15 @@ class StudentDetailView(generic.DetailView) :
     model = models.Student
     context_object_name = 'student'
 
- 
+def BootstrapFilterView(request):
+    qs = Projects.objects.all()
+    name_contains_query = request.GET.get('name_contains')
+    # description_contains_query = request.GET.get('description_contains')
+    # print(title_contains_query)
+
+    if name_contains_query != '' and name_contains_query is not None:
+        qs = qs.filter(name__icontains=name_contains_query)
+    context = {
+        'queryset' :qs    
+    }
+    return render(request, "bootstrap_form.html",context)
