@@ -2,7 +2,10 @@ from django.shortcuts import render
 from . import models
 
 from django.views import generic
-from .models import Projects
+from .models import Projects,Student
+
+def is_valid_queryparam(param):
+    return param != '' and param is not None
 
 
 # Create your views here.
@@ -35,12 +38,36 @@ class StudentDetailView(generic.DetailView) :
 def BootstrapFilterView(request):
     qs = Projects.objects.all()
     name_contains_query = request.GET.get('name_contains')
-    # description_contains_query = request.GET.get('description_contains')
-    # print(title_contains_query)
+    description_contains_query = request.GET.get('description_contains')
+    date_min = request.GET.get('date_min')
+    date_max = request.GET.get('date_max')
+    # author = request.GET.get('author')
+    # students= Student.objects.all()
+
 
     if name_contains_query != '' and name_contains_query is not None:
         qs = qs.filter(name__icontains=name_contains_query)
+
+
+    if description_contains_query != '' and description_contains_query is not None:
+        qs = qs.filter(description__icontains=description_contains_query)
+    
+ 
+
+    if is_valid_queryparam(date_min) :
+        qs = qs.filter(start_date__gte=date_min) 
+    
+    if is_valid_queryparam(date_max) :
+        qs = qs.filter(start_date__lt=date_max) 
+
+    # if is_valid_queryparam(author) and author!= 'Choose...':
+    #     qs = qs.filter(student__name=author)
+
+
     context = {
-        'queryset' :qs    
+        'queryset' :qs
+        # 'author' :students
+
     }
+
     return render(request, "bootstrap_form.html",context)

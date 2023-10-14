@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                  <a class="nav-link" href="projects">Projects</a>
+                  <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="#">React</a>
@@ -44,18 +44,42 @@
             </div>        
         </div>
         <div class="form-row">
+          <div class="form-group col-12">
+              <div class="input-group">
+                  <input class="form-control py-2 border-right-0 border" type="search" name="description_contains" placeholder="Description of the project contains ..." />
+                  <span class="input-group-append">
+                      <div class="input-group-text bg-transparent">
+                          <i class="fa fa-search"></i>
+                      </div>
+                  </span>
+              </div>
+          </div>        
+      </div>
+        <div class="form-row">
 
           <div class="form-group col-md-2 col-lg-2">
-            <label for="publishDateMin">Publish date minimum</label>
+            <label for="publishDateMin">Starting date minimum</label>
             <input type="date" class="form-control" id="publishDateMin" name="date_min">
           </div>
           <div class="form-group col-md-2 col-lg-2">
-            <label for="publishDateMax">Publish date maximum</label>
+            <label for="publishDateMax">Starting date maximum</label>
             <input type="date" class="form-control" id="publishDateMax" name="date_max">
           </div>
 
         </div>
-        <div class="form-group">
+
+        {% comment %} <div class="form-group col-md-4">
+          <label for="author">Author</label>
+          <select id="author" class="form-control" name="author">
+            <option selected>Choose...</option>
+            {% for student in students %}
+            <option value="{{ student }}">{{ student }}</option>
+            {% endfor %}
+          </select>
+        </div> {% endcomment %}
+
+
+        {% comment %} <div class="form-group">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="reviewed" name="reviewed">
             <label class="form-check-label" for="reviewed">
@@ -70,7 +94,7 @@
               Not reviewed
             </label>
           </div>
-        </div> 
+        </div>  {% endcomment %}
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
 
