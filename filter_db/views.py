@@ -37,12 +37,14 @@ class StudentDetailView(generic.DetailView) :
 
 def BootstrapFilterView(request):
     qs = Projects.objects.all()
+    #print('qs',qs)
     name_contains_query = request.GET.get('name_contains')
     description_contains_query = request.GET.get('description_contains')
     date_min = request.GET.get('date_min')
     date_max = request.GET.get('date_max')
-    # author = request.GET.get('author')
-    # students= Student.objects.all()
+    student = request.GET.get('student')
+    students= Student.objects.all()
+    #print(students)
 
 
     if name_contains_query != '' and name_contains_query is not None:
@@ -60,13 +62,14 @@ def BootstrapFilterView(request):
     if is_valid_queryparam(date_max) :
         qs = qs.filter(start_date__lt=date_max) 
 
-    # if is_valid_queryparam(author) and author!= 'Choose...':
-    #     qs = qs.filter(student__name=author)
+    if is_valid_queryparam(student) and student != 'Choose...':
+        print('author',student, students)
+        qs = qs.filter(students__last_name=student)
 
 
     context = {
-        'queryset' :qs
-        # 'author' :students
+        'queryset' :qs,
+        'students' :students,
 
     }
 
