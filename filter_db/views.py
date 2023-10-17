@@ -35,6 +35,28 @@ class StudentDetailView(generic.DetailView) :
     model = models.Student
     context_object_name = 'student'
 
+class StudentCreateView(generic.CreateView) :
+    model = models.Student
+    template_name = 'student_form.html'
+    fields = ['student_id','first_name','middle_name','last_name','start_date','end_date']
+
+class StudentUpdateView(generic.UpdateView) :
+    model = models.Student
+    template_name = 'student_form.html'
+    fields = ['student_id','first_name','middle_name','last_name','start_date','end_date']
+
+class ProjectCreateView(generic.CreateView) :
+    model = models.Projects
+    template_name = 'project_form.html'
+    fields = ['project_id','name', 'start_date', 'end_date','description','students']
+
+class ProjectUpdateView(generic.UpdateView) :
+    model = models.Projects
+    template_name = 'project_form.html'
+    fields = ['project_id','name', 'start_date', 'end_date','description','students']
+
+
+
 def BootstrapFilterView(request):
     qs = Projects.objects.all()
     #print('qs',qs)

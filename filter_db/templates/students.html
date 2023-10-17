@@ -7,6 +7,9 @@ students
 {% block content %}
 <h1>List of students</h1>
 <p> Here is a list of all students </p>
+<a href = "{% url 'student_form' %}">
+    {{ student }}
+</a> 
 <ul class = "list-group">
         {% for student in students %}
             
